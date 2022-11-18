@@ -2,12 +2,12 @@ using NLayerApp.DAL.Data;
 using Microsoft.EntityFrameworkCore;
 using NLayerApp.DAL.Repository;
 using NLayerApp.DAL.Interfaces;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
 builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 builder.Services.AddScoped<IPatientRepository, PatientRepository>();
@@ -18,7 +18,7 @@ builder.Services.AddControllersWithViews()
 );
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<DataContext>(options => options.UseMySql("server=localhost;user=root;password=;database=Hospital", ServerVersion.AutoDetect("server=localhost;user=root;password=;database=lr2")));
+builder.Services.AddDbContext<DataContext>(options => options.UseMySql("server=localhost;user=root;password=87dima87;database=Hospital", ServerVersion.AutoDetect("server=localhost;user=root;password=87dima87;database=Hospital")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

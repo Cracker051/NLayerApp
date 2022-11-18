@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using NLayerApp.DAL.Entities;
 using NLayerApp.DAL.Interfaces;
+using AutoMapper;
 using NLayerApp.DAL.DTO;
 using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
@@ -12,9 +13,11 @@ namespace NLayerApp.DAL.Controllers
     public class DepartmentController : Controller
     {
         private readonly IDepartmentRepository _departmentRepository;
-        public DepartmentController(IDepartmentRepository departmentRepository)
+        private readonly IMapper _mapper;
+        public DepartmentController(IDepartmentRepository departmentRepository, IMapper mapper)
         {
             _departmentRepository = departmentRepository;
+            _mapper = mapper;
         }
 
         [HttpGet]
@@ -22,7 +25,7 @@ namespace NLayerApp.DAL.Controllers
         public IActionResult GetDepartments()
         {
             
-            var departments= _departmentRepository.GetDepartments();
+            var departments= _mapper.Map<List<DepartmentsDTO>>(_departmentRepository.GetDepartments());
             if (!ModelState.IsValid) return BadRequest(ModelState);
             return Ok(departments);
         }
@@ -33,7 +36,7 @@ namespace NLayerApp.DAL.Controllers
         public IActionResult GetDepartmentById(int id)
         {
             if (!_departmentRepository.DepartmentExist(id)) return NotFound();
-            var department = _departmentRepository.GetDepartmentById(id);
+            var department = _mapper.Map<DepartmentsDTO>(_departmentRepository.GetDepartmentById(id));
             if (!ModelState.IsValid) return BadRequest(ModelState);
             return Ok(department);
         }
@@ -43,9 +46,8 @@ namespace NLayerApp.DAL.Controllers
         [ProducesResponseType(400)]
         public IActionResult GetDepartmentByName(string name)
         {
-            var department = _departmentRepository.GetDepartmentByName(name);
-            if (department==null) return NotFound();
-            Console.WriteLine(department);
+            var department = _mapper.Map<DepartmentsDTO>(_departmentRepository.GetDepartmentByName(name));
+            if (department == null) return NotFound();
             if (!ModelState.IsValid) return BadRequest(ModelState);
             return Ok(department);
         }

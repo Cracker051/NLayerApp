@@ -11,8 +11,8 @@ using NLayerApp.DAL.Data;
 namespace NLayerApp.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221105155154_Initial1")]
-    partial class Initial1
+    [Migration("20221117125211_initial1")]
+    partial class initial1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -49,11 +49,15 @@ namespace NLayerApp.DAL.Migrations
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Full_name")
+                    b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("longtext");
 
-                    b.Property<string>("Phone")
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("surname")
                         .IsRequired()
                         .HasColumnType("longtext");
 
@@ -80,16 +84,20 @@ namespace NLayerApp.DAL.Migrations
                     b.Property<int>("DoctorId")
                         .HasColumnType("int");
 
-                    b.Property<string>("Full_name")
-                        .IsRequired()
-                        .HasColumnType("longtext");
-
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("longtext");
 
                     b.Property<DateOnly?>("Recovery_date")
                         .HasColumnType("date");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
+                    b.Property<string>("surname")
+                        .IsRequired()
+                        .HasColumnType("longtext");
 
                     b.HasKey("Id");
 

@@ -1,4 +1,5 @@
-﻿using NLayerApp.DAL.Entities;
+﻿using NLayerApp.DAL.DTO;
+using NLayerApp.DAL.Entities;
 
 namespace NLayerApp.DAL.Interfaces
 {
