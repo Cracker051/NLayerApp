@@ -1,16 +1,19 @@
-using NLayerApp.DAL.Data;
 using Microsoft.EntityFrameworkCore;
-using NLayerApp.DAL.Repository;
+using NLayerApp.BLL.Services;
+using NLayerApp.DAL;
 using NLayerApp.DAL.Interfaces;
+using NLayerApp.DAL.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
 builder.Services.AddControllers();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
-builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
-builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+//builder.Services.AddScoped<IDepartmentRepository, DepartmentRepository>();
+//builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
+//builder.Services.AddScoped<IPatientRepository, PatientRepository>();
+//builder.Services.AddScoped<IDepartmentServices, DepartmentServices>();
 //    // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddControllersWithViews()
     .AddNewtonsoftJson(options =>

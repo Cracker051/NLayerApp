@@ -1,5 +1,4 @@
-﻿using NLayerApp.DAL.Data;
-using NLayerApp.DAL.Entities;
+﻿using NLayerApp.DAL.Entities;
 using NLayerApp.DAL.Interfaces;
 
 namespace NLayerApp.DAL.Repository
@@ -33,10 +32,9 @@ namespace NLayerApp.DAL.Repository
             var saved = _context.SaveChanges();
             return saved > 0 ? true : false;
         }
-        public bool CreateDepartment(Departments department)
+        public void CreateDepartment(Departments department)
         {
             _context.Add(department);
-            return Save();
         }
     }
 }

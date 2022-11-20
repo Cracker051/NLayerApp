@@ -4,14 +4,14 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using NLayerApp.DAL.Data;
+using NLayerApp.DAL;
 
 #nullable disable
 
 namespace NLayerApp.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221117125211_initial1")]
+    [Migration("20221120104355_initial1")]
     partial class initial1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

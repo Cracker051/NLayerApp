@@ -1,8 +1,8 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
+using NLayerApp.BLL.DTO;
 using NLayerApp.DAL.Entities;
-using NLayerApp.DAL.DTO;
-namespace NLayerApp.DAL.Helper
+
+namespace NLayerApp.BLL.Profiles
 {
 	public class MappingProfiles:Profile
 	{

@@ -1,5 +1,4 @@
-﻿using NLayerApp.DAL.Data;
-using NLayerApp.DAL.Entities;
+﻿using NLayerApp.DAL.Entities;
 using NLayerApp.DAL.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using System.Linq;

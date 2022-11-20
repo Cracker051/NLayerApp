@@ -1,8 +1,6 @@
 ﻿using System.Linq;
-using NLayerApp.DAL.Data;
 using NLayerApp.DAL.Entities;
 using NLayerApp.DAL.Interfaces;
-using NLayerApp.DAL.DTO;
 using Microsoft.EntityFrameworkCore;
 namespace NLayerApp.DAL.Repository
 {

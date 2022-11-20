@@ -1,4 +1,4 @@
-﻿namespace NLayerApp.DAL.DTO
+﻿namespace NLayerApp.BLL.DTO
 {
     public class PatientsDTO
     {
