@@ -2,8 +2,8 @@
 using Microsoft.AspNetCore.Mvc;
 using NLayerApp.BLL.Exceptions;
 using NLayerApp.BLL.Services;
+using NLayerApp.BLL.DTO;
 using NLayerApp.DAL.Entities;
-using NLayerApp.DAL.Interfaces;
 using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
 
 namespace NLayerApp.DAL.Controllers
@@ -55,28 +55,20 @@ namespace NLayerApp.DAL.Controllers
             }
         }
 
-        //[HttpPost]
-        //[ProducesResponseType(204)]
-        //[ProducesResponseType(400)]
-        //public IActionResult CreateDepartment([FromBody] Departments departmentCreate)
-        //{
-        //    if (departmentCreate == null) return BadRequest(ModelState);
-
-        //    var department = _departmentRepository.GetDepartments().Where(p => p.Name.Trim().ToUpper() == departmentCreate.Name.Trim().ToUpper()).FirstOrDefault();
-
-        //    if (department != null)
-        //    {
-        //        ModelState.AddModelError("", "Department already exists!");
-        //        return StatusCode(422, ModelState);
-        //    }
-
-        //    if (!ModelState.IsValid) return BadRequest(ModelState);
-        //    if (!_departmentRepository.CreateDepartment(departmentCreate))
-        //    {
-        //        ModelState.AddModelError("", "Smth went wrong while saving");
-        //        return StatusCode(500, ModelState);
-        //    }
-        //    return Ok("Successfully created!");
-        //}
+        [HttpPost]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        public IActionResult CreateDepartment([FromBody] DepartmentsDTO departmentCreate)
+        {
+            try
+            {
+                return Ok(_departmentService.Create(departmentCreate));
+            }
+            catch (ArleadyExistsException ex)
+            {
+                ModelState.AddModelError("", "Department already exists!");
+                return StatusCode(422,ModelState);
+            } 
+        }
     }
 }

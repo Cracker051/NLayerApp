@@ -46,10 +46,14 @@ namespace NLayerApp.BLL.Services
         }
         public DepartmentsDTO Create(DepartmentsDTO department)
         {
+            if (_departmentRepository.DepartmentExist(department.Name))
+            {
+                throw new ArleadyExistsException(nameof(Departments), department.Name);
+            }
             var entity = _mapper.Map<Departments>(department);
             _departmentRepository.CreateDepartment(entity);
             _departmentRepository.Save();
-            return _mapper.Map<DepartmentsDTO>(entity);
+            return _mapper.Map<DepartmentsDTO>(entity);         
         }
     }
 }

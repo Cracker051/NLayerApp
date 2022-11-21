@@ -3,10 +3,10 @@
     "NLayerApp.WebAPI": {
       "commandName": "Project",
       "launchBrowser": true,
+      "applicationUrl": "https://localhost:57042;http://localhost:57043",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "https://localhost:57042;http://localhost:57043"
+      }
     }
   }
 }

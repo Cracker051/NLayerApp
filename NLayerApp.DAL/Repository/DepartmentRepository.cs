@@ -23,6 +23,10 @@ namespace NLayerApp.DAL.Repository
         {
             return _context.Departments.Any(p => p.Id == departmentId);
         }
+        public bool DepartmentExist(string departmentName)
+        {
+            return _context.Departments.Any(p => p.Name == departmentName);
+        }
         public ICollection<Departments> GetDepartments()
         {
             return _context.Departments.OrderBy(p => p.Id).ToList();
@@ -36,5 +40,6 @@ namespace NLayerApp.DAL.Repository
         {
             _context.Add(department);
         }
+
     }
 }

@@ -71,6 +71,8 @@ namespace NLayerApp.DAL.Migrations
                     Diagnosis = table.Column<string>(type: "longtext", nullable: false)
                         .Annotation("MySql:CharSet", "utf8mb4"),
                     DoctorId = table.Column<int>(type: "int", nullable: false),
+                    DoctorName = table.Column<string>(type: "longtext", nullable: false)
+                        .Annotation("MySql:CharSet", "utf8mb4"),
                     Arrive_date = table.Column<DateOnly>(type: "date", nullable: false),
                     Recovery_date = table.Column<DateOnly>(type: "date", nullable: true)
                 },

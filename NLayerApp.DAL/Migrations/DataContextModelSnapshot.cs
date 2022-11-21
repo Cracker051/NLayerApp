@@ -82,6 +82,10 @@ namespace NLayerApp.DAL.Migrations
                     b.Property<int>("DoctorId")
                         .HasColumnType("int");
 
+                    b.Property<string>("DoctorName")
+                        .IsRequired()
+                        .HasColumnType("longtext");
+
                     b.Property<string>("Phone")
                         .IsRequired()
                         .HasColumnType("longtext");

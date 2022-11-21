@@ -8,9 +8,9 @@ namespace NLayerApp.BLL.Profiles
 	{
 		public MappingProfiles()
 		{
-			CreateMap<Departments, DepartmentsDTO>();
-            CreateMap<Doctors, DoctorsDTO>();
-            CreateMap<Patients, PatientsDTO>();
+			CreateMap<Departments, DepartmentsDTO>().ReverseMap();
+            CreateMap<Doctors, DoctorsDTO>().ReverseMap();
+			CreateMap<Patients, PatientsDTO>().ReverseMap();
 		}
 	}
 }
