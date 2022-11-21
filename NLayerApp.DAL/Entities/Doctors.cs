@@ -7,7 +7,7 @@
         public string surname { get; set; }
         public string Email { get; set; }
         public string Phone { get; set; }
-        public virtual Departments Department { get; set; }
+        public Departments Department { get; set; }
 
         public virtual ICollection<Patients> Patients { get; set; } = new List<Patients>();
 

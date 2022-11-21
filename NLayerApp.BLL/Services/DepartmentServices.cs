@@ -21,12 +21,26 @@ namespace NLayerApp.BLL.Services
             _departmentRepository = departmentRepository;
             _mapper = mapper;
         }
+        public ICollection<DepartmentsDTO> GetDepartments()
+        {
+            var entities = _departmentRepository.GetDepartments();
+            return _mapper.Map<ICollection<DepartmentsDTO>>(entities);
+        }
         public DepartmentsDTO GetById(int id)
         {
             var entity = _departmentRepository.GetDepartmentById(id);
             if (entity == null)
             {
                 throw new NotFoundException(nameof(Departments), id);
+            }
+            return _mapper.Map<DepartmentsDTO>(entity);
+        }
+        public DepartmentsDTO GetByName(string name)
+        {
+            var entity=_departmentRepository.GetDepartmentByName(name);
+            if(entity==null)
+            {
+                throw new NotFoundException(nameof(Departments), name);
             }
             return _mapper.Map<DepartmentsDTO>(entity);
         }

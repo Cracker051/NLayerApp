@@ -16,21 +16,7 @@ namespace NLayerApp.DAL.Repository
             return _context.Patients.OrderBy(p=>p.Id).Include(p=> p.Doctor).ToList();
         }
         public Patients GetPatientById(int id)
-        {
-            //return _context.Patients
-            //    .Where(p => p.Id == id)
-            //    .Select(p => new Patients
-            //    {
-            //        Id = p.Id,
-            //        name = p.name,
-            //        surname = p.surname,
-            //        Phone = p.Phone,
-            //        Diagnosis = p.Diagnosis,
-            //        Arrive_date = p.Arrive_date,
-            //        Recovery_date = p.Recovery_date,
-            //        Doctor = p.Doctor.Select(d=>d.Id)
-            //    }).AsNoTracking()
-            //    .FirstOrDefault();
+        { 
             return _context.Patients.Include(p => p.Doctor).Where(p => p.Id == id).FirstOrDefault();
         }
         public bool PatientExist(int id)

@@ -6,5 +6,7 @@ namespace NLayerApp.BLL.Services
     {
         DepartmentsDTO Create(DepartmentsDTO department);
         DepartmentsDTO GetById(int id);
+        DepartmentsDTO GetByName(string name);
+        ICollection<DepartmentsDTO> GetDepartments();
     }
 }

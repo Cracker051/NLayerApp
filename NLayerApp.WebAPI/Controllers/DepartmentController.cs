@@ -19,15 +19,12 @@ namespace NLayerApp.DAL.Controllers
             _departmentService = departmentService;
         }
 
-        //[HttpGet]
-        //[ProducesResponseType(200, Type = typeof(IEnumerable<Departments>))]
-        //public IActionResult GetDepartments()
-        //{
-
-        //    var departments = _mapper.Map<List<DepartmentsDTO>>(_departmentRepository.GetDepartments());
-        //    if (!ModelState.IsValid) return BadRequest(ModelState);
-        //    return Ok(departments);
-        //}
+        [HttpGet]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Departments>))]
+        public IActionResult GetDepartments()
+        {
+            return Ok(_departmentService.GetDepartments());
+        }
 
         [HttpGet("getById/{id}")]
         [ProducesResponseType(200, Type = typeof(IEnumerable<Departments>))]
@@ -43,16 +40,20 @@ namespace NLayerApp.DAL.Controllers
             }
         }
 
-        //[HttpGet("getByName/{name}")]
-        //[ProducesResponseType(200, Type = typeof(IEnumerable<Departments>))]
-        //[ProducesResponseType(400)]
-        //public IActionResult GetDepartmentByName(string name)
-        //{
-        //    var department = _mapper.Map<DepartmentsDTO>(_departmentRepository.GetDepartmentByName(name));
-        //    if (department == null) return NotFound();
-        //    if (!ModelState.IsValid) return BadRequest(ModelState);
-        //    return Ok(department);
-        //}
+        [HttpGet("getByName/{name}")]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<Departments>))]
+        [ProducesResponseType(400)]
+        public IActionResult GetDepartmentByName(string name)
+        {
+            try
+            {
+                return Ok(_departmentService.GetByName(name));
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound();
+            }
+        }
 
         //[HttpPost]
         //[ProducesResponseType(204)]
