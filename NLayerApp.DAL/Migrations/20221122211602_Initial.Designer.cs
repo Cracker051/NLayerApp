@@ -11,8 +11,8 @@ using NLayerApp.DAL;
 namespace NLayerApp.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221121211210_initial1")]
-    partial class initial1
+    [Migration("20221122211602_Initial")]
+    partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -83,10 +83,6 @@ namespace NLayerApp.DAL.Migrations
 
                     b.Property<int>("DoctorId")
                         .HasColumnType("int");
-
-                    b.Property<string>("DoctorName")
-                        .IsRequired()
-                        .HasColumnType("longtext");
 
                     b.Property<string>("Phone")
                         .IsRequired()

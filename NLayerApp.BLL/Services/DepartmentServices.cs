@@ -3,11 +3,6 @@ using NLayerApp.BLL.DTO;
 using NLayerApp.BLL.Exceptions;
 using NLayerApp.DAL.Entities;
 using NLayerApp.DAL.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NLayerApp.BLL.Services
 {
@@ -28,20 +23,21 @@ namespace NLayerApp.BLL.Services
         }
         public DepartmentsDTO GetById(int id)
         {
-            var entity = _departmentRepository.GetDepartmentById(id);
-            if (entity == null)
+            
+            if (!_departmentRepository.DepartmentExist(id))
             {
                 throw new NotFoundException(nameof(Departments), id);
             }
+            var entity = _departmentRepository.GetDepartmentById(id);
             return _mapper.Map<DepartmentsDTO>(entity);
         }
         public DepartmentsDTO GetByName(string name)
         {
-            var entity=_departmentRepository.GetDepartmentByName(name);
-            if(entity==null)
+            if (!_departmentRepository.DepartmentExist(name))
             {
                 throw new NotFoundException(nameof(Departments), name);
             }
+            var entity = _departmentRepository.GetDepartmentByName(name);
             return _mapper.Map<DepartmentsDTO>(entity);
         }
         public DepartmentsDTO Create(DepartmentsDTO department)
@@ -53,7 +49,7 @@ namespace NLayerApp.BLL.Services
             var entity = _mapper.Map<Departments>(department);
             _departmentRepository.CreateDepartment(entity);
             _departmentRepository.Save();
-            return _mapper.Map<DepartmentsDTO>(entity);         
+            return _mapper.Map<DepartmentsDTO>(entity);  
         }
     }
 }

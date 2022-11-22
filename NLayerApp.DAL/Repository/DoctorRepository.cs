@@ -19,17 +19,30 @@ namespace NLayerApp.DAL.Repository
         {
             return _context.Doctors.Any(p => p.Id == DoctorId);
         }
+        public bool DoctorExist(string DoctorName)
+        {
+            return _context.Doctors.Any(p => p.name == DoctorName);
+        }
         public Doctors GetDoctorById(int id)
         {
             return _context.Doctors.Include(p=>p.Department).Where(p => p.Id == id).FirstOrDefault();
         }
-        public ICollection<Doctors> GetDoctorsBySurname(string name)
+        public ICollection<Doctors> GetDoctorsBySurname(string surname)
         {
-            return _context.Doctors.Include(p => p.Department).Where(p => p.surname == name).ToList();
+            return _context.Doctors.Include(p => p.Department).Where(p => p.surname == surname).ToList();
         }
         public ICollection<Doctors> GetDoctorsByDepartment(string DepartmentName)
         {
             return _context.Doctors.Include(p => p.Department).Where(p => p.Department.Name == DepartmentName).ToList();
+        }
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true : false;
+        }
+        public void CreateDoctor(Doctors doctor)
+        {
+            _context.Add(doctor);
         }
     }
 }

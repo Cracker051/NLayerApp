@@ -1,4 +1,5 @@
-﻿using NLayerApp.DAL.Entities;
+﻿using Microsoft.EntityFrameworkCore;
+using NLayerApp.DAL.Entities;
 using NLayerApp.DAL.Interfaces;
 
 namespace NLayerApp.DAL.Repository
@@ -10,14 +11,13 @@ namespace NLayerApp.DAL.Repository
         {
             _context = context;
         }
-
         public Departments GetDepartmentById(int id)
         {
-            return _context.Departments.Where(p => p.Id == id).FirstOrDefault();
+            return _context.Departments.Include(d => d.Doctors).Where(p => p.Id == id).FirstOrDefault();
         }
         public Departments GetDepartmentByName(string name)
         {
-            return _context.Departments.Where(p => p.Name == name).FirstOrDefault();
+            return _context.Departments.Include(d=>d.Doctors).Where(p => p.Name == name).FirstOrDefault();
         }
         public bool DepartmentExist(int departmentId)
         {
@@ -29,7 +29,7 @@ namespace NLayerApp.DAL.Repository
         }
         public ICollection<Departments> GetDepartments()
         {
-            return _context.Departments.OrderBy(p => p.Id).ToList();
+            return _context.Departments.Include(d => d.Doctors).OrderBy(p => p.Id).ToList();
         }
         public bool Save()
         {
