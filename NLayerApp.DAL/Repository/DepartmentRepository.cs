@@ -40,6 +40,11 @@ namespace NLayerApp.DAL.Repository
         {
             _context.Add(department);
         }
+        public bool UpdateDepartment(Departments department)
+        {
+            _context.Update(department);
+            return Save();
+        }
 
     }
 }

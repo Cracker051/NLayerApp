@@ -51,5 +51,20 @@ namespace NLayerApp.BLL.Services
             _departmentRepository.Save();
             return _mapper.Map<DepartmentsDTO>(entity);  
         }
+
+        public DepartmentsDTO Update(int departmentId,DepartmentsDTO department)
+        {
+            if (!_departmentRepository.DepartmentExist(departmentId))
+            {
+                throw new NotFoundException();
+            }
+            var departmentMap = _mapper.Map<Departments>(department);
+            if(!_departmentRepository.UpdateDepartment(departmentMap))
+            {
+                throw new ModelErrorException("Smth went wrong!");
+            }
+            return _mapper.Map<DepartmentsDTO>(departmentMap);
+
+        }
     }
 }

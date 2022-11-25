@@ -5,6 +5,7 @@ using NLayerApp.BLL.Services;
 using NLayerApp.BLL.DTO;
 using NLayerApp.DAL.Entities;
 using RouteAttribute = Microsoft.AspNetCore.Mvc.RouteAttribute;
+using System.Net;
 
 namespace NLayerApp.DAL.Controllers
 {
@@ -31,7 +32,7 @@ namespace NLayerApp.DAL.Controllers
         [ProducesResponseType(400)]
         public IActionResult GetDepartmentById(int id)
         {
-            try{
+            try {
                 return Ok(_departmentService.GetById(id));
             }
             catch (NotFoundException ex)
@@ -67,8 +68,32 @@ namespace NLayerApp.DAL.Controllers
             catch (ArleadyExistsException ex)
             {
                 ModelState.AddModelError("", "Department already exists!");
-                return StatusCode(422,ModelState);
-            } 
+                return StatusCode(422, ModelState);
+            }
         }
+
+        [HttpPut("{departmentId}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public IActionResult UpdateDepartment(int departmentId,[FromBody] DepartmentsDTO department)
+        {
+            try
+            {
+                _departmentService.Update(departmentId, department);
+                return NoContent();
+            }
+            catch(NotFoundException ex)
+            {
+                ModelState.AddModelError("", "Department with this id doesnt exists!");
+                return BadRequest(ModelState);
+            }
+            catch(ModelErrorException ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return StatusCode(500, ModelState);
+            }
+        }
+
     }
 }

@@ -10,6 +10,8 @@ namespace NLayerApp.DAL.Interfaces
         bool DepartmentExist(int departmentId);
         bool DepartmentExist(string departmentName);
         void CreateDepartment(Departments department);
+        bool UpdateDepartment(Departments department);
         bool Save();
+
     }
 }
