@@ -36,13 +36,19 @@ namespace NLayerApp.DAL.Repository
             var saved = _context.SaveChanges();
             return saved > 0 ? true : false;
         }
-        public void CreateDepartment(Departments department)
+        public bool CreateDepartment(Departments department)
         {
             _context.Add(department);
+            return Save();
         }
         public bool UpdateDepartment(Departments department)
         {
             _context.Update(department);
+            return Save();
+        }
+        public bool DeleteDepartment(Departments department)
+        {
+            _context.Remove(department);
             return Save();
         }
 

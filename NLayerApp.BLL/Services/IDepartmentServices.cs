@@ -8,6 +8,7 @@ namespace NLayerApp.BLL.Services
         DepartmentsDTO Update(int departmentId,DepartmentsDTO department);
         DepartmentsDTO GetById(int id);
         DepartmentsDTO GetByName(string name);
+        bool Delete(int departmentId);
         ICollection<DepartmentsDTO> GetDepartments();
     }
 }

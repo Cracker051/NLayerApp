@@ -99,5 +99,28 @@ namespace NLayerApp.DAL.Controllers
             }
         }
 
+        [HttpDelete("{departmentId}")]
+        [ProducesResponseType(204)]
+        [ProducesResponseType(400)]
+        [ProducesResponseType(404)]
+        public IActionResult DeleteDepartment(int departmentId)
+        {
+            try
+            {
+                _departmentService.Delete(departmentId);
+                return NoContent();
+            }
+            catch (NotFoundException ex)
+            {
+                return NotFound();
+            }
+            catch (ModelErrorException ex)
+            {
+                ModelState.AddModelError("", ex.Message);
+                return BadRequest(ModelState);
+            }
+        }
+
+
     }
 }

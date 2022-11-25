@@ -47,8 +47,10 @@ namespace NLayerApp.BLL.Services
                 throw new ArleadyExistsException(nameof(Departments), department.Name);
             }
             var entity = _mapper.Map<Departments>(department);
-            _departmentRepository.CreateDepartment(entity);
-            _departmentRepository.Save();
+            if(!_departmentRepository.CreateDepartment(entity))
+            {
+                throw new ModelErrorException("Smth went wrong!");
+            }
             return _mapper.Map<DepartmentsDTO>(entity);  
         }
 
@@ -60,17 +62,29 @@ namespace NLayerApp.BLL.Services
             }
             if (!_departmentRepository.DepartmentExist(departmentId))
             {
-                throw new NotFoundException();
+                throw new NotFoundException(nameof(Departments), departmentId);
             }
             var departmentMap = _mapper.Map<Departments>(department);
-            if(!_departmentRepository.UpdateDepartment(departmentMap))
+            if (_departmentRepository.UpdateDepartment(departmentMap))
             {
                 throw new ModelErrorException("Smth went wrong!");
             }
             return _mapper.Map<DepartmentsDTO>(departmentMap);
-
         }
 
-        public 
+        public bool Delete(int departmentId)
+        {
+            if (!_departmentRepository.DepartmentExist(departmentId))
+            {
+                throw new NotFoundException(nameof(Departments), departmentId);
+            }
+            var departmentToDelete = _departmentRepository.GetDepartmentById(departmentId);
+            if (!_departmentRepository.DeleteDepartment(departmentToDelete))
+            {
+                throw new ModelErrorException("Smth went wrong!");
+            }
+            return true;
+
+        }
     }
 }
