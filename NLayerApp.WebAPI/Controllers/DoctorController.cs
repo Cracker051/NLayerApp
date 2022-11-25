@@ -19,14 +19,14 @@ namespace NLayerApp.DAL.Controllers
             _doctorServices = doctorServices;
         }
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<Doctors>))]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<DoctorsDTO>))]
         [ProducesResponseType(400)]
         public IActionResult GetDoctors()
         {
             return Ok(_doctorServices.GetDoctors());
         }
         [HttpGet("getById/{id}")]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<Doctors>))]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<DoctorsDTO>))]
         [ProducesResponseType(400)]
         public IActionResult GetDoctorById(int id)
         {
@@ -40,7 +40,7 @@ namespace NLayerApp.DAL.Controllers
             }
         }
         [HttpGet("getBySurname/{surname}")]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<Doctors>))]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<DoctorsDTO>))]
         [ProducesResponseType(400)]
         public IActionResult GetDoctorsBySurname(string surname)
         {
@@ -55,7 +55,7 @@ namespace NLayerApp.DAL.Controllers
             }
         }
         [HttpGet("getByDepartment/{departmentName}")]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<Doctors>))]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<DoctorsDTO>))]
         [ProducesResponseType(400)]
         public IActionResult GetDoctorsByDepartment(string departmentName)
         {
@@ -70,7 +70,7 @@ namespace NLayerApp.DAL.Controllers
             }
         }
         [HttpPost]
-        [ProducesResponseType(204)]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<DoctorsDTO>))]
         [ProducesResponseType(400)]
         public IActionResult CreateDoctor([FromBody] DoctorsDTO doctor)
         {

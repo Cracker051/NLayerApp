@@ -21,14 +21,14 @@ namespace NLayerApp.DAL.Controllers
         }
 
         [HttpGet]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<Departments>))]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<DepartmentsDTO>))]
         public IActionResult GetDepartments()
         {
             return Ok(_departmentService.GetDepartments());
         }
 
         [HttpGet("getById/{id}")]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<Departments>))]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<DepartmentsDTO>))]
         [ProducesResponseType(400)]
         public IActionResult GetDepartmentById(int id)
         {
@@ -42,7 +42,7 @@ namespace NLayerApp.DAL.Controllers
         }
 
         [HttpGet("getByName/{name}")]
-        [ProducesResponseType(200, Type = typeof(IEnumerable<Departments>))]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<DepartmentsDTO>))]
         [ProducesResponseType(400)]
         public IActionResult GetDepartmentByName(string name)
         {
@@ -57,7 +57,7 @@ namespace NLayerApp.DAL.Controllers
         }
 
         [HttpPost]
-        [ProducesResponseType(204)]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<DepartmentsDTO>))]
         [ProducesResponseType(400)]
         public IActionResult CreateDepartment([FromBody] DepartmentsDTO departmentCreate)
         {
@@ -73,7 +73,7 @@ namespace NLayerApp.DAL.Controllers
         }
 
         [HttpPut("{departmentId}")]
-        [ProducesResponseType(204)]
+        [ProducesResponseType(200, Type = typeof(IEnumerable<DepartmentsDTO>))]
         [ProducesResponseType(400)]
         [ProducesResponseType(404)]
         public IActionResult UpdateDepartment(int departmentId,[FromBody] DepartmentsDTO department)

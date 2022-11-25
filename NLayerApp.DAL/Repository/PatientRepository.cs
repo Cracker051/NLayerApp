@@ -25,7 +25,7 @@ namespace NLayerApp.DAL.Repository
         }
         public ICollection<Patients> GetPatientsBySurname(string name)
         {
-            return _context.Patients.Include(p => p.Doctor).Where(p => p.surname==name).ToList();
+            return _context.Patients.Include(p => p.Doctor).Where(p => p.Surname==name).ToList();
         }
         public ICollection<Patients> GetPatientsByDiagnosis(string diagnosis)
         {

@@ -21,7 +21,7 @@ namespace NLayerApp.DAL.Repository
         }
         public bool DoctorExist(string DoctorName)
         {
-            return _context.Doctors.Any(p => p.name == DoctorName);
+            return _context.Doctors.Any(p => p.Name == DoctorName);
         }
         public Doctors GetDoctorById(int id)
         {
@@ -29,7 +29,7 @@ namespace NLayerApp.DAL.Repository
         }
         public ICollection<Doctors> GetDoctorsBySurname(string surname)
         {
-            return _context.Doctors.Include(p => p.Department).Where(p => p.surname == surname).ToList();
+            return _context.Doctors.Include(p => p.Department).Where(p => p.Surname == surname).ToList();
         }
         public ICollection<Doctors> GetDoctorsByDepartment(string DepartmentName)
         {
