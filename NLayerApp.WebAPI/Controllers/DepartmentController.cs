@@ -80,8 +80,7 @@ namespace NLayerApp.DAL.Controllers
         {
             try
             {
-                _departmentService.Update(departmentId, department);
-                return NoContent();
+                return Ok(_departmentService.Update(departmentId, department));
             }
             catch(NotFoundException ex)
             {
@@ -91,7 +90,7 @@ namespace NLayerApp.DAL.Controllers
             catch(ModelErrorException ex)
             {
                 ModelState.AddModelError("", ex.Message);
-                return StatusCode(500, ModelState);
+                return BadRequest(ModelState);
             }
         }
 
