@@ -54,6 +54,10 @@ namespace NLayerApp.BLL.Services
 
         public DepartmentsDTO Update(int departmentId,DepartmentsDTO department)
         {
+            if (departmentId != department.Id)
+            {
+                throw new ArgumentException("Id's arent equal");
+            }
             if (!_departmentRepository.DepartmentExist(departmentId))
             {
                 throw new NotFoundException();

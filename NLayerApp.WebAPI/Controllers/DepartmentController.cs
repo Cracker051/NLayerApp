@@ -82,6 +82,11 @@ namespace NLayerApp.DAL.Controllers
             {
                 return Ok(_departmentService.Update(departmentId, department));
             }
+            catch(ArgumentException ex)
+            {
+                    ModelState.AddModelError("", ex.Message);
+                    return BadRequest(ModelState);
+            }
             catch(NotFoundException ex)
             {
                 ModelState.AddModelError("", "Department with this id doesnt exists!");
