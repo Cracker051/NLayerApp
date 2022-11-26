@@ -59,7 +59,6 @@ namespace NLayerApp.BLL.Services
             }
             var entity = _mapper.Map<Doctors>(doctors);
             _doctorRepository.CreateDoctor(entity);
-            _doctorRepository.Save();
             return _mapper.Map<DoctorsDTO>(entity);
         }
         public DoctorsDTO UpdateDoctor(int doctorId,DoctorsDTO doctors)

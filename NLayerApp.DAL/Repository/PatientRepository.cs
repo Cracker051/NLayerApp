@@ -31,5 +31,25 @@ namespace NLayerApp.DAL.Repository
         {
             return _context.Patients.Include(p => p.Doctor).Where(p => p.Diagnosis == diagnosis).ToList();
         }
+        public bool Save()
+        {
+            var saved = _context.SaveChanges();
+            return saved > 0 ? true:false;
+        }
+        public bool Create(Patients patient)
+        {
+            _context.Add(patient);
+            return Save();
+        }
+        public bool Update(Patients patient)
+        {
+            _context.Update(patient);
+            return Save();
+        }
+        public bool Delete(Patients patient)
+        {
+            _context.Remove(patient);
+            return Save();
+        }
     }
 }

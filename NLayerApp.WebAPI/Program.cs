@@ -17,6 +17,7 @@ builder.Services.AddScoped<IDoctorRepository, DoctorRepository>();
 builder.Services.AddScoped<IPatientRepository, PatientRepository>();
 builder.Services.AddScoped<IDepartmentServices, DepartmentServices>();
 builder.Services.AddScoped<IDoctorServices, DoctorServices>();
+builder.Services.AddScoped<IPatientServices, PatientServices>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

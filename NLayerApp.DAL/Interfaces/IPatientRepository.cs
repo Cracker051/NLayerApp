@@ -9,5 +9,9 @@ namespace NLayerApp.DAL.Interfaces
         ICollection<Patients> GetPatientsBySurname(string surname);
         ICollection<Patients> GetPatientsByDiagnosis(string diagnosis);
         bool PatientExist(int id);
+        bool Save();
+        bool Create(Patients patient);
+        bool Update(Patients patient);
+        bool Delete(Patients patient);
     }
 }
