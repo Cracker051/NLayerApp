@@ -20,7 +20,7 @@ builder.Services.AddScoped<IDoctorServices, DoctorServices>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<DataContext>(options => options.UseMySql("server=localhost;user=root;password=;database=hospital", ServerVersion.AutoDetect("server=localhost;user=root;password=;database=hospital")));
+builder.Services.AddDbContext<DataContext>(options => options.UseMySql("server=localhost;user=root;password=87dima87;database=hospital", ServerVersion.AutoDetect("server=localhost;user=root;password=87dima87;database=hospital")));
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

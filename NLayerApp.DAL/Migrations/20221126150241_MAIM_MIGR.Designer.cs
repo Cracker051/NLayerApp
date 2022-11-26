@@ -11,8 +11,8 @@ using NLayerApp.DAL;
 namespace NLayerApp.DAL.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221125134205_initial2")]
-    partial class initial2
+    [Migration("20221126150241_MAIM_MIGR")]
+    partial class MAIM_MIGR
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

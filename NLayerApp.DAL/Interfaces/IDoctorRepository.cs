@@ -10,7 +10,9 @@ namespace NLayerApp.DAL.Interfaces
         ICollection<Doctors> GetDoctorsByDepartment(string DepartmentName);
         bool DoctorExist(int doctorId);
         bool DoctorExist(string doctorName);
-        void CreateDoctor(Doctors entity);
+        bool CreateDoctor(Doctors entity);
+        bool UpdateDoctor(Doctors doctor);
+        bool DeleteDoctor(Doctors doctor);
         bool Save();
     }
 }

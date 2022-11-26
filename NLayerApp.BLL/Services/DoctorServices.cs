@@ -62,6 +62,41 @@ namespace NLayerApp.BLL.Services
             _doctorRepository.Save();
             return _mapper.Map<DoctorsDTO>(entity);
         }
+        public DoctorsDTO UpdateDoctor(int doctorId,DoctorsDTO doctors)
+        {
+            if (!_doctorRepository.DoctorExist(doctorId))
+            {
+                throw new NotFoundException(nameof(Doctors), doctorId);
+            }
+            if (doctorId != doctors.Id)
+            {
+                throw new ArgumentException("Ids arent equal!");
+            }
+            if (!_departmentRepository.DepartmentExist(doctors.DepartmentId))
+            {
+                throw new NotFoundException(nameof(Departments), doctors.DepartmentId);
+            }
+            var doctor = _mapper.Map<Doctors>(doctors);
+            if (!_doctorRepository.UpdateDoctor(doctor))
+            {
+                throw new ModelErrorException("Smth went wrong");
+            }
+            return _mapper.Map<DoctorsDTO>(doctor);
+        }
+        public bool DeleteDoctor(int doctorId)
+        {
+            if (!_doctorRepository.DoctorExist(doctorId))
+            {
+                throw new NotFoundException(nameof(Doctors), doctorId);
+            }
+            var doctorToDelete = _doctorRepository.GetDoctorById(doctorId);
+            if (!_doctorRepository.DeleteDoctor(doctorToDelete))
+            {
+                throw new ModelErrorException("Smth went wrong!");
+            }
+            return true;
+
+        }
     }
 }
 

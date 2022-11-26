@@ -40,9 +40,20 @@ namespace NLayerApp.DAL.Repository
             var saved = _context.SaveChanges();
             return saved > 0 ? true : false;
         }
-        public void CreateDoctor(Doctors doctor)
+        public bool CreateDoctor(Doctors doctor)
         {
             _context.Add(doctor);
+            return Save();
+        }
+        public bool UpdateDoctor(Doctors doctor)
+        {
+            _context.Update(doctor);
+            return Save();
+        }
+        public bool DeleteDoctor(Doctors doctor)
+        {
+            _context.Remove(doctor);
+            return Save();
         }
     }
 }

@@ -9,5 +9,7 @@ namespace NLayerApp.BLL.Services
         ICollection<DoctorsDTO> GetDoctorsBySurname(string surname);
         ICollection<DoctorsDTO> GetDoctorsByDepartment(string departmentName);
         DoctorsDTO CreateDoctor(DoctorsDTO doctor);
+        DoctorsDTO UpdateDoctor(int doctorId, DoctorsDTO doctors);
+        bool DeleteDoctor(int doctorId);
     }
 }
