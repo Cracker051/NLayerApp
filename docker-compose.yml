@@ -1,0 +1,12 @@
+version: '3.4'
+
+services:
+  nlayerapp.webapi:
+    image: ${DOCKER_REGISTRY-}nlayerapp
+    build:
+      context: .
+      dockerfile: NLayerApp.WebAPI/Dockerfile
+
+networks:
+ default:
+   name: full_project

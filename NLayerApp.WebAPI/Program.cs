@@ -22,6 +22,7 @@ builder.Services.AddScoped<IPatientServices, PatientServices>();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddDbContext<DataContext>(options => options.UseMySql("server=localhost;user=root;password=87dima87;database=hospital", ServerVersion.AutoDetect("server=localhost;user=root;password=87dima87;database=hospital")));
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -36,5 +37,4 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
 app.Run();

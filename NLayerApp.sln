@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLayerApp.BLL", "NLayerApp.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NLayerApp.WebAPI", "NLayerApp.WebAPI\NLayerApp.WebAPI.csproj", "{DDFFA021-0CEB-4195-88AA-8BCB31A87FFC}"
 EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{C33AD866-2EE8-4D5C-90E7-418078C0B1FC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{DDFFA021-0CEB-4195-88AA-8BCB31A87FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DDFFA021-0CEB-4195-88AA-8BCB31A87FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DDFFA021-0CEB-4195-88AA-8BCB31A87FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C33AD866-2EE8-4D5C-90E7-418078C0B1FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C33AD866-2EE8-4D5C-90E7-418078C0B1FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C33AD866-2EE8-4D5C-90E7-418078C0B1FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C33AD866-2EE8-4D5C-90E7-418078C0B1FC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
